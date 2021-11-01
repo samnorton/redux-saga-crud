@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "James Smith",
+      "email": "james@gmail.com",
+      "phone": "3555555",
+      "address": "USA"
+    },
+    {
+      "id": 2,
+      "name": "Robert Johnson",
+      "email": "robert@gmail.com",
+      "phone": "1555555",
+      "address": "USA"
+    },
+    {
+      "id": 3,
+      "name": "Kisa Johnson",
+      "email": "kisa@gmail.com",
+      "phone": "3555555",
+      "address": "UK"
+    }
+  ]
+}
