@@ -1,16 +1,30 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUsersStart } from "../redux/actions/userAction";
-import { Container, Row, Table } from "react-bootstrap";
+import { loadUsersStart, deleteUserStart } from "../redux/actions/userAction";
+import { Container, Row, Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  const { users } = useSelector((state) => state.users);
+  const { users, loading, error } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(loadUsersStart());
   }, [dispatch]);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      dispatch(deleteUserStart(id));
+    }
+  };
+
+  if (loading) {
+    return "Loading!";
+  }
+
+  if (error) {
+    return error;
+  }
 
   return (
     <Container>
@@ -48,7 +62,9 @@ export default function HomePage() {
                     >
                       Edit
                     </Link>
-                    <Link to={`/delete-user/${item.id}`}>Delete</Link>
+                    <Button onClick={() => handleDelete(item.id)}>
+                      Delete
+                    </Button>
                   </td>
                 </tr>
               ))}
